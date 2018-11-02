@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.jagat.tourguide.R;
-import com.example.jagat.tourguide.app.MonumentAcivity;
+import com.example.jagat.tourguide.app.MonumentActivity;
 import com.example.jagat.tourguide.model.Category;
 
 import java.util.List;
@@ -23,7 +24,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
     private Context mContext;
     private List<Category> mCategoryList;
-    //private OnItemClickListener mOnItemClickListener;
 
     public MainAdapter(Context mContext,List<Category> mCategoryList){
         this.mContext=mContext;
@@ -31,7 +31,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements RecyclerView.OnItemTouchListener {
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView thumbnail;
         public TextView title;
         public MyViewHolder(@NonNull View itemView) {
@@ -40,21 +41,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
             title=itemView.findViewById(R.id.title);
         }
 
-
-        @Override
-        public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-            return false;
-        }
-
-        @Override
-        public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-
-        }
-
-        @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean b) {
-
-        }
     }
 
     @NonNull
@@ -72,22 +58,64 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
         Glide.with(mContext).load(item.getThumbnail()).into(myViewHolder.thumbnail);
 
+
+
         myViewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext,item.getTitle().toString(),Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(mContext,MonumentAcivity.class);
 
+                Intent temp=new Intent(mContext,MonumentActivity.class);
+                temp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                temp.putExtra("Title",item.getTitle());
+                temp.putExtra("Thumbnail",item.getThumbnail());
+                mContext.startActivity(temp);
 
             }
         });
-
     }
-
 
     @Override
     public int getItemCount() {
         return mCategoryList.size();
+    }
+
+    public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
+        private OnItemClickListener mListener;
+
+        public interface OnItemClickListener {
+            void onItemClick(View view, int position);
+        }
+
+        GestureDetector mGestureDetector;
+
+        public RecyclerItemClickListener(Context context, OnItemClickListener listener) {
+            mListener = listener;
+            mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+            });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+            View childView = view.findChildViewUnder(e.getX(), e.getY());
+            if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
+                mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView view, MotionEvent motionEvent) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.jagat.tourguide.app;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,10 +27,9 @@ import com.example.jagat.tourguide.model.Monument;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements MainAdapter.RecyclerItemClickListener.OnItemClickListener{
 
     private RecyclerView mRecycleview;
-    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutmanager;
     private MainAdapter mMainAdapter;
     private List<Category> mListCategory;
@@ -87,4 +88,9 @@ public class MainActivity extends AppCompatActivity{
         mMainAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_SHORT).show();
+
+    }
 }

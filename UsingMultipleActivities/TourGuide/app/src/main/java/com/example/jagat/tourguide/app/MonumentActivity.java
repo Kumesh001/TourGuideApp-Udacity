@@ -1,6 +1,7 @@
 package com.example.jagat.tourguide.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,13 +18,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MonumentAcivity extends AppCompatActivity {
+public class MonumentActivity extends AppCompatActivity {
 
     private RecyclerView mRecycleView;
     private Context mContext;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<Monument> mMonumentList;
+    private String mTitle;
+    private int mThumbnail;
 
     private static final HashMap<String,int[]> days=new HashMap<String, int[]>(){{
         put("Monday",new int[]{9,10});
@@ -86,7 +89,15 @@ public class MonumentAcivity extends AppCompatActivity {
 
         //mRecycleView.addItemDecoration(new );
         Toast.makeText(mContext,"Wait preparing data",Toast.LENGTH_SHORT).show();
+        getIncomingIntent();
         prepareData();
+
+    }
+
+    private void getIncomingIntent(){
+        //Intent myIntent=getIntent();
+        //if(getIntent())
+
     }
 
     private void prepareData(){
