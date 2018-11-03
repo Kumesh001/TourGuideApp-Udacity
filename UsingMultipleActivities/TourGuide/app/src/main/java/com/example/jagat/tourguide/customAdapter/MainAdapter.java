@@ -16,6 +16,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.jagat.tourguide.R;
 import com.example.jagat.tourguide.app.MonumentActivity;
+import com.example.jagat.tourguide.app.MusuemActivity;
+import com.example.jagat.tourguide.app.ParkActivity;
+import com.example.jagat.tourguide.app.RestaurantActivity;
 import com.example.jagat.tourguide.model.Category;
 
 import java.util.List;
@@ -51,26 +54,46 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
         final Category item=mCategoryList.get(i);
         myViewHolder.title.setText(item.getTitle());
         myViewHolder.title.setShadowLayer(50,0,0,Color.WHITE);
 
         Glide.with(mContext).load(item.getThumbnail()).into(myViewHolder.thumbnail);
 
-
-
         myViewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,item.getTitle().toString(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext,item.getTitle().toString(),Toast.LENGTH_SHORT).show();
 
-                Intent temp=new Intent(mContext,MonumentActivity.class);
-                temp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                temp.putExtra("Title",item.getTitle());
-                temp.putExtra("Thumbnail",item.getThumbnail());
-                mContext.startActivity(temp);
-
+                switch (item.getTitle())
+                {
+                    case "Monuments":Intent temp=new Intent(mContext,MonumentActivity.class);
+                        temp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        temp.putExtra("Title",item.getTitle());
+                        temp.putExtra("Thumbnail",item.getThumbnail());
+                        mContext.startActivity(temp);
+                        break;
+                    case "Parks":Intent park=new Intent(mContext,ParkActivity.class);
+                        park.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        park.putExtra("Title",item.getTitle());
+                        park.putExtra("Thumbnail",item.getThumbnail());
+                        mContext.startActivity(park);
+                        break;
+                    case "Restaurants":Intent restaurant=new Intent(mContext,RestaurantActivity.class);
+                        restaurant.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        restaurant.putExtra("Title",item.getTitle());
+                        restaurant.putExtra("Thumbnail",item.getThumbnail());
+                        mContext.startActivity(restaurant);
+                        break;
+                    case "Museums":Intent museums=new Intent(mContext,MusuemActivity.class);
+                        museums.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        museums.putExtra("Title",item.getTitle());
+                        museums.putExtra("Thumbnail",item.getThumbnail());
+                        mContext.startActivity(museums);
+                        break;
+                    default:
+                }
             }
         });
     }

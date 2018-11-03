@@ -14,22 +14,21 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.jagat.tourguide.R;
 import com.example.jagat.tourguide.model.Parks;
+import com.example.jagat.tourguide.model.Restaurants;
 
 import java.util.ArrayList;
 
-public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.MyViewHolder> {
+public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.MyViewHolder> {
 
     private Context mContext;
-    private ArrayList<Parks> mParkList;
+    private ArrayList<Restaurants> mRestaurantList;
 
-
-
-
-    public ParkAdapter(Context mContext, ArrayList<Parks> park)
+    public RestaurantAdapter(Context mContext, ArrayList<Restaurants> restaurant)
     {
         this.mContext=mContext;
-        this.mParkList=park;
+        this.mRestaurantList=restaurant;
     }
+
     public class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView thumbnail,direction;
         TextView title,status;
@@ -54,7 +53,7 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        final Parks item=mParkList.get(i);
+        final Restaurants item=mRestaurantList.get(i);
         myViewHolder.title.setText(item.getName());
         myViewHolder.status.setText("Open");
 
@@ -69,7 +68,7 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return mParkList.size();
+        return mRestaurantList.size();
     }
 
 

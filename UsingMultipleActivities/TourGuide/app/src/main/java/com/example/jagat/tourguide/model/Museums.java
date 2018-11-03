@@ -4,16 +4,26 @@ import java.util.HashMap;
 
 public class Museums {
     private String name,description,address,day;
-    private int rating,open,close,type;
+    private int rating,open,close,type,thumbnail;
     private HashMap<Integer,int[]> days;
 
-    public Museums(String name,String des,String address, int rating,int type,HashMap<Integer,int[]> days){
+    public Museums(String name,String des,String address, int thumbnail,int rating,int type,HashMap<Integer,int[]> days){
         this.name=name;
         this.description=des;
         this.address=address;
         this.days=days;
         this.rating=rating;
         this.type=type;
+        this.thumbnail=thumbnail;
+    }
+
+    public void setThumbnail(int thumbnail)
+    {
+        this.thumbnail=thumbnail;
+    }
+
+    public int getThumbnail(){
+        return thumbnail;
     }
 
     public int getType() {

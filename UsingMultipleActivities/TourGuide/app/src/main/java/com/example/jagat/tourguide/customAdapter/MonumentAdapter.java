@@ -47,7 +47,7 @@ public class MonumentAdapter extends RecyclerView.Adapter<MonumentAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemView=LayoutInflater.from(mContext).inflate(R.layout.monument_item_layout,viewGroup,false);
+        View itemView=LayoutInflater.from(mContext).inflate(R.layout.item_layout,viewGroup,false);
         return new MyViewHolder(itemView);
     }
 

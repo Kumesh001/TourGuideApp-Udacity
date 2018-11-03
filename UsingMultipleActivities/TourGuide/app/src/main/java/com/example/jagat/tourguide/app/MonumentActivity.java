@@ -88,16 +88,14 @@ public class MonumentActivity extends AppCompatActivity {
         mRecycleView.setAdapter(mAdapter);
 
         //mRecycleView.addItemDecoration(new );
-        Toast.makeText(mContext,"Wait preparing data",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mContext,"Wait preparing data",Toast.LENGTH_SHORT).show();
         getIncomingIntent();
         prepareData();
 
     }
 
     private void getIncomingIntent(){
-        //Intent myIntent=getIntent();
-        //if(getIntent())
-
+        Intent myIntent=getIntent();
     }
 
     private void prepareData(){

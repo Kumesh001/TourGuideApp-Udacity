@@ -77,14 +77,14 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Recyc
         a = new Category("Restaurants",covers[2]);
         mListCategory.add(a);
 
-        a = new Category("Art Museums", covers[3]);
+        a = new Category("Museums", covers[3]);
         mListCategory.add(a);
 
-        a = new Category("Design Museums",  covers[4]);
+        /*a = new Category("Design Museums",  covers[4]);
         mListCategory.add(a);
 
         a = new Category("Science Museums",covers[5]);
-        mListCategory.add(a);
+        mListCategory.add(a);*/
         mMainAdapter.notifyDataSetChanged();
     }
 

@@ -9,18 +9,19 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.jagat.tourguide.R;
 import com.example.jagat.tourguide.customAdapter.ParkAdapter;
+import com.example.jagat.tourguide.customAdapter.RestaurantAdapter;
 import com.example.jagat.tourguide.model.Parks;
+import com.example.jagat.tourguide.model.Restaurants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class ParkActivity extends AppCompatActivity {
+public class RestaurantActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLaayoutManager;
-    private ArrayList<Parks> mParkList;
-    private ParkAdapter mAdapter;
+    private ArrayList<Restaurants> mRestaurantList;
+    private RestaurantAdapter mAdapter;
 
     private static final HashMap<Integer,int[]> days=new HashMap<Integer, int[]>(){{
         put(0,new int[]{9,10});
@@ -33,30 +34,47 @@ public class ParkActivity extends AppCompatActivity {
     };
 
     private static final String[] names=new String[]{
-            "Children's Park",
-            "National Zoological Park",
-            "Water Parks",
-            "Amusement Park"
+            "Kake Da Hotel",
+            "Saravana Bhawan",
+            "Bukhara",
+            "Indian Accent",
+            "Dum Pukht",
+            "Dakshin",
+            "Karim’s",
+            "Moti Mahal"
     };
     private static final int[] rating=new int[]{
-            2,3,4,5
+            4,3,4,5,5,4,3,4
     };
     private static final String[] address=new String[]{
-            "New Delhi",
-            "New Delhi",
-            "New Delhi",
-            "New Delhi"
+            "67, Municipal Market, Connaught Circle, Connaught Place, New Delhi",
+            "P-13, Connaught Circus, Connaught Place, New Delhi",
+            "ITC Maurya, Chanakyapuri, New Delhi",
+            "The Lodhi, Lodhi Road, New Delhi",
+            " ITC Maurya, Chanakyapuri, New Delhi",
+            " Sheraton New Delhi Hotel, District Centre, Saket, New Delhi",
+            " 16, Gali Kababian, Jama Masjid, New Delhi",
+            " 3703, Netaji Subhash Marg, Daryaganj, New Delhi"
+
     };
     private static final int[] thumbnails=new int[]{
-            R.drawable.childern_park,
-            R.drawable.national_zoological_park,
-            R.drawable.water_park,
-            R.drawable.amusement_park
+            R.drawable.kake,
+            R.drawable.saravan,
+            R.drawable.bukhra,
+            R.drawable.indian_accent,
+            R.drawable.dum_pukht,
+            R.drawable.dakshin,
+            R.drawable.karims_at_old_delhi,
+            R.drawable.moti_mahal
     };
     private static final int[] type=new int[]{
-            1,1,1,1
+            1,1,1,1,1,1,1,1
     };
     private static final String[] des=new String[]{
+            "Description",
+            "Description",
+            "Description",
+            "Description",
             "Description",
             "Description",
             "Description",
@@ -69,9 +87,8 @@ public class ParkActivity extends AppCompatActivity {
         setContentView(R.layout.content_main);
 
         mRecyclerView=findViewById(R.id.recycler_view);
-        mParkList=new ArrayList<>();
-
-        mAdapter=new ParkAdapter(getApplicationContext(),mParkList);
+        mRestaurantList=new ArrayList<>();
+        mAdapter=new RestaurantAdapter(getApplicationContext(),mRestaurantList);
         mLaayoutManager=new GridLayoutManager(getApplicationContext(),2);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLaayoutManager);
@@ -83,8 +100,8 @@ public class ParkActivity extends AppCompatActivity {
     private void prepareData(){
         for(int i=0;i<names.length;i++)
         {
-            Parks object= new Parks(names[i],des[i],address[i],type[i],thumbnails[i],rating[i],days);
-            mParkList.add(object);
+            Restaurants object= new Restaurants(names[i],des[i],address[i],type[i],thumbnails[i],rating[i],days);
+            mRestaurantList.add(object);
         }
         mAdapter.notifyDataSetChanged();
     }

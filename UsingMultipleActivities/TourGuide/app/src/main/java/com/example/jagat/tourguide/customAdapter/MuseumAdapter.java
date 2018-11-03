@@ -13,22 +13,19 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.jagat.tourguide.R;
-import com.example.jagat.tourguide.model.Parks;
+import com.example.jagat.tourguide.model.Museums;
+import com.example.jagat.tourguide.model.Restaurants;
 
 import java.util.ArrayList;
 
-public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.MyViewHolder> {
+public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MyViewHolder> {
 
     private Context mContext;
-    private ArrayList<Parks> mParkList;
+    private ArrayList<Museums> mMuseumList;
 
-
-
-
-    public ParkAdapter(Context mContext, ArrayList<Parks> park)
-    {
-        this.mContext=mContext;
-        this.mParkList=park;
+    public MuseumAdapter(Context applicationContext, ArrayList<Museums> mMuseumList) {
+        this.mContext=applicationContext;
+        this.mMuseumList=mMuseumList;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView thumbnail,direction;
@@ -54,7 +51,7 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        final Parks item=mParkList.get(i);
+        final Museums item=mMuseumList.get(i);
         myViewHolder.title.setText(item.getName());
         myViewHolder.status.setText("Open");
 
@@ -62,16 +59,13 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.MyViewHolder> 
         myViewHolder.direction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,item.getName().toString(),Toast.LENGTH_SHORT).show();
+               // Toast.makeText(mContext,item.getName().toString(),Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return mParkList.size();
+        return mMuseumList.size();
     }
-
-
-
 }

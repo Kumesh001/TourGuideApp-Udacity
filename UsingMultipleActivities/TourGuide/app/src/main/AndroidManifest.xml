@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.MonumentActivity"/>
-
+        <activity android:name=".app.ParkActivity" />
+        <activity android:name=".app.RestaurantActivity" />
+        <activity android:name=".app.MusuemActivity" />
     </application>
 
 </manifest>
