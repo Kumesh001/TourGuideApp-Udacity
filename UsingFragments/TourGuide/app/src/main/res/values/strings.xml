@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Tour Guide</string>
+    <string name="header_app_name">Tour Guide App</string>
+    <string name="header_title">Udacity</string>
+    <string name="monument">Historical Monument</string>
+    <string name="museum">Museums</string>
+    <string name="restaurant">Restaurants</string>
+    <string name="park">Parks</string>
+    <string name="other">Others</string>
+    <string name="setting">Settings</string>
+    <string name="help">Help</string>
+    <string name="appbar_scrolling_view_behavior"></string>
+    <string name="home">Home</string>
+
+</resources>

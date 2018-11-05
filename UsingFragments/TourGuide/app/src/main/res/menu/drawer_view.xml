@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/home"
+            android:title="@string/home"
+            android:icon="@drawable/ic_home"
+            android:checked="true">
+        </item>
+
+        <item
+            android:id="@+id/monument"
+            android:title="@string/monument"
+            android:icon="@drawable/ic_coliseum"/>
+        <item
+            android:id="@+id/museum"
+            android:icon="@drawable/ic_museum"
+            android:title="@string/museum"/>
+        <item
+            android:id="@+id/restaurant"
+            android:icon="@drawable/ic_restaurant"
+            android:title="@string/restaurant" />
+        <item
+            android:id="@+id/park"
+            android:icon="@drawable/ic_park"
+            android:title="@string/park" />
+
+        <item android:title="@string/other">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/setting"
+                        android:icon="@drawable/ic_settings"
+                        android:title="@string/setting">
+                    </item>
+
+                    <item android:title="@string/help"
+                        android:icon="@drawable/ic_support"
+                        android:id="@+id/help">
+                    </item>
+                </group>
+            </menu>
+        </item>
+    </group>
+</menu>
